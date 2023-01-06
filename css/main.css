@@ -1,0 +1,213 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.liveResult {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  border: 2px solid #6c5ce7;
+}
+.liveResult .wrongTry {
+  width: 115px;
+}
+
+.memory {
+  margin-top: 40px;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 150px);
+  gap: 10px;
+}
+.memory .card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.6;
+  transform-style: preserve-3d;
+  perspective: 700px;
+}
+.memory .card .frontFace, .memory .card .backFace {
+  position: absolute;
+  border: 1px solid;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+  transform-origin: top center;
+  cursor: pointer;
+}
+.memory .card .backFace {
+  transform: rotateY(180deg);
+  line-height: 1.9;
+  font-size: 5rem;
+}
+.memory .card .frontFace {
+  font-size: 6rem;
+  font-weight: bold;
+}
+
+.rotate .backFace {
+  transform: rotateY(0deg) !important;
+}
+.rotate .frontFace {
+  transform: rotateY(-180deg);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.overlay .start {
+  width: 250px;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+  color: white;
+  background: #6c5ce7;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.overlay .start:hover {
+  -webkit-animation: shudder 0.5s infinite alternate linear;
+          animation: shudder 0.5s infinite alternate linear;
+}
+@-webkit-keyframes shudder {
+  10% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes shudder {
+  10% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.win {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.win .inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.win .statistic {
+  width: 350px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #dfe6e9;
+  border-radius: 10px;
+}
+.win .statistic .playAgain {
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: inherit;
+  background-color: #6c5ce7;
+  color: white;
+  cursor: pointer;
+}
+.win .statistic h3 {
+  font-size: 1.5rem;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  background: #6c5ce7;
+  text-transform: capitalize;
+}
+.win .statistic h3 span {
+  color: #2d3436;
+}
+.win .inner > span {
+  position: relative;
+  margin: 0 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0px 8px rgb(11, 150, 175), 0 0 50px 10px rgb(7, 242, 255), 0 0 100px 10px rgb(6, 188, 243);
+  width: 20px;
+  height: 20px;
+  background: rgb(0, 153, 255);
+  -webkit-animation: flow 10s infinite linear;
+          animation: flow 10s infinite linear;
+  -webkit-animation-duration: calc(50s / var(--i));
+          animation-duration: calc(50s / var(--i));
+}
+.win .inner > span:nth-of-type(even) {
+  box-shadow: 0 0 0px 8px rgb(175, 11, 148), 0 0 20px 0px rgb(255, 7, 102), 0 0 100px 9px rgb(243, 6, 6);
+  background: rgb(255, 0, 191);
+}
+@-webkit-keyframes flow {
+  from {
+    transform: translateY(100vh) scale(0);
+  }
+  to {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+@keyframes flow {
+  from {
+    transform: translateY(100vh) scale(0);
+  }
+  to {
+    transform: translateY(-10vh) scale(1);
+  }
+}/*# sourceMappingURL=main.css.map */
